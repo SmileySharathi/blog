@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\FileUpload;
+use App\Http\Controllers\ImageUploadController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +33,10 @@ Route::post('store', [BookController::class, 'store'])->name('store');
 Route::get('edit/{id}', [BookController::class, 'edit']);
 Route::post('update',[BookController::class, 'update'])->name('books.update');
 // Route::get('books','BookController@index');
+
+
+Route::get('/upload-file', [FileUpload::class, 'createForm']);
+Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
+
+Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
+Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
