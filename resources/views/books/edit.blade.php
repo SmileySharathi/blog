@@ -8,7 +8,7 @@
                 <h2>Edit Book</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('books') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -26,22 +26,30 @@
     @endif
 
 
-    <form action="{{ route('books.update',$book->id) }}" method="POST">
+    {{-- <form action="{{ route('books.update',$book->id) }}" method="POST"> --}}
+    <form action="{{ route('books.update') }}" method="POST">
     	@csrf
-        @method('PUT')
+        {{-- @method('PUT') --}}
 
 
          <div class="row">
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" value="{{ $book->name }}" class="form-control" placeholder="Name">
+		            <strong>Title :</strong>
+		            <input type="text" name="title" value="{{ $book->title }}" class="form-control" placeholder="Name">
+		            <input type="text" name="edid" value="{{ $book->id }}" class="form-control" placeholder="Name">
 		        </div>
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $book->detail }}</textarea>
+		            <strong>Body :</strong>
+		            <textarea class="form-control" style="height:150px" name="body" placeholder="Detail">{{ $book->body }}</textarea>
+		        </div>
+		    </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Slug :</strong>
+		            <input type="text" name="slug" value="{{ $book->slug }}" class="form-control" placeholder="Name">
 		        </div>
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -49,8 +57,5 @@
 		    </div>
 		</div>
 
-
     </form>
-
-
 @endsection

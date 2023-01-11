@@ -30,7 +30,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -41,11 +41,17 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $post = $request->all();
+        // dd($post);
         $ins = new Post();
-        $ins->title = 'Amypo';
-        $ins->body = 'Amypo rtest';
-        $ins->slug = 'my sole 2 yr';
+        $ins->title = $request->title;
+        $ins->body = $request->body;
+        $ins->slug = $request->slug;
+        // dd($ins);
+
         $ins->save();
+
+        return response()->json(["result" => "ok"], 201);
     }
 
     /**
@@ -67,9 +73,12 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        // dd($id);
+        return view('books.edit', [
+            'book' => Post::where('_id', '=', $id)->first()
+        ]);
     }
 
     /**
@@ -79,9 +88,16 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request)
     {
-        //
+        // dd($request->edid);
+        $post = Post::find($request->edid);
+       $post->title = $request->title;
+       $post->body = $request->body;
+       $post->slug = $request->slug;
+       $post->save();
+
+       return response()->json(["result" => "ok"], 201);
     }
 
     /**

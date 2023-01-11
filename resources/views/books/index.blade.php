@@ -8,7 +8,7 @@
                 <h2>Books</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="#"> Create New Book</a>
+                <a class="btn btn-success" href='create'> Create New Book</a>
             </div>
         </div>
     </div>
@@ -44,10 +44,12 @@
                     {{-- <a class="btn btn-info" href="{{ route('show',$book->slug) }}">Show</a> --}}
                     <a class="btn btn-info" href='show/{{ $book->slug }}'>Show</a>
 
-                    <a class="btn btn-primary" href="destroy/{{ $book->id }}">Edit</a>
+                    <a class="btn btn-primary" href="edit/{{ $book->id }}">Edit</a>
                     {{-- @csrf --}}
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    {{-- @method('DELETE') --}}
+                    {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
+                    <a class="btn btn-danger" href="destroy/{{ $book->id }}">Delete</a>
+
                 </form>
 	        </td>
 	    </tr>
