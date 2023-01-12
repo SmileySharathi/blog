@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Books</h2>
+                <h2>
+                    @php
+        $email = title();
+     @endphp
+     {{ $email }}
+                </h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href='create'> Create New Book</a>

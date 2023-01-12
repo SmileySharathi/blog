@@ -20,7 +20,6 @@ class BookController extends Controller
         return view('books.index',compact('books'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
         // dd($books);
-
     }
 
     /**
@@ -42,13 +41,10 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $post = $request->all();
-        // dd($post);
         $ins = new Post();
         $ins->title = $request->title;
         $ins->body = $request->body;
         $ins->slug = $request->slug;
-        // dd($ins);
-
         $ins->save();
 
         return response()->json(["result" => "ok"], 201);
@@ -91,7 +87,7 @@ class BookController extends Controller
     public function update(Request $request)
     {
         // dd($request->edid);
-        $post = Post::find($request->edid);
+       $post = Post::find($request->edid);
        $post->title = $request->title;
        $post->body = $request->body;
        $post->slug = $request->slug;
@@ -109,7 +105,7 @@ class BookController extends Controller
     public function destroy($postId)
     {
         $post = Post::find($postId);
-     $post->delete();
+        $post->delete();
 
      return response()->json(["result" => "ok"], 200);
     }
