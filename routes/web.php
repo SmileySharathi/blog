@@ -6,7 +6,7 @@ use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\TrainerController;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
